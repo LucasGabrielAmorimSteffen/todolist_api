@@ -6,7 +6,7 @@ const getAll = async function(){
 };
 
 const createTask = async (tasks)=>{
-    const { titulo } = tasks;
+    const {titulo} = tasks.rows;
     const dateUTC = new Date(Date.now()).toUTCString();
     const SQL = 'INSERT INTO tasks(titulo, status, created_at) VALUES (?, ?, ?)';
     const [createdTask] = await connection.query(SQL, [title, 'pendente', dateUTC])
