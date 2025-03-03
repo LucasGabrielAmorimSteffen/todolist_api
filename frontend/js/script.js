@@ -11,7 +11,7 @@ const fetchTasks = async () => {
 const addTask = async (event) => {
   event.preventDefault();
 
-  const task = { title: inputTask.value };
+  const task = { titulo: inputTask.value };
 
   await fetch('http://localhost:3301/tasks', {
     method: 'post',
@@ -32,12 +32,12 @@ const deleteTask = async (id) => {
   loadTasks();
 }
 
-const updateTask = async ({ id, title, status }) => {
+const updateTask = async ({ id, titulo, status }) => {
 
   await fetch(`http://localhost:3301/tasks/${id}`, {
     method: 'put',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ title, status }),
+    body: JSON.stringify({ titulo, status }),
   });
 
   loadTasks();
@@ -81,10 +81,10 @@ const createSelect = (value) => {
 
 const createRow = (task) => {
 
-  const { id, title, created_at, status } = task;
+  const { id, titulo, created_at, status } = task;
 
   const tr = createElement('tr');
-  const tdTitle = createElement('td', title);
+  const tdtitulo = createElement('td', titulo);
   const tdCreatedAt = createElement('td', formatDate(created_at));
   const tdStatus = createElement('td');
   const tdActions = createElement('td');
@@ -99,18 +99,18 @@ const createRow = (task) => {
   const editForm = createElement('form');
   const editInput = createElement('input');
 
-  editInput.value = title;
+  editInput.value = titulo;
   editForm.appendChild(editInput);
   
   editForm.addEventListener('submit', (event) => {
     event.preventDefault();
     
-    updateTask({ id, title: editInput.value, status });
+    updateTask({ id, titulo: editInput.value, status });
   });
 
   editButton.addEventListener('click', () => {
-    tdTitle.innerText = '';
-    tdTitle.appendChild(editForm);
+    tdtitulo.innerText = '';
+    tdtitulo.appendChild(editForm);
   });
 
   editButton.classList.add('btn-action');
@@ -123,7 +123,7 @@ const createRow = (task) => {
   tdActions.appendChild(editButton);
   tdActions.appendChild(deleteButton);
 
-  tr.appendChild(tdTitle);
+  tr.appendChild(tdtitulo);
   tr.appendChild(tdCreatedAt);
   tr.appendChild(tdStatus);
   tr.appendChild(tdActions);
