@@ -6,11 +6,11 @@ const getAll = async function() {
 };
 
 const createTask = async (tasks) => {
-    const {title} = tasks;
+    const {titulo} = tasks;
     const dateUTC = new Date(Date.now()).toUTCString();
 
-    const query = 'INSERT INTO tasks(title, status, created_at) VALUES ($1, $2, $3) RETURNING id';
-    const { rows } = await connection.query(query, [title, 'pendente', dateUTC]);
+    const query = 'INSERT INTO tasks(titulo, status, created_at) VALUES ($1, $2, $3) RETURNING id';
+    const { rows } = await connection.query(query, [titulo, 'pendente', dateUTC]);
     return {id: createTask.id}; 
 };
 
