@@ -1,11 +1,11 @@
 const validadeFieldTitle = (request, response, next) =>{
     const { body } = request;
 
-    if (body.title === undefined){
+    if (body.titulo === undefined){
         response.status(400).json({ message: 'The field title is required.'});
     }
 
-    if (body.title === ""){
+    if (body.titulo === ""){
         response.status(400).json({ message: 'Title cannot be empty'});
     }
 

@@ -20,11 +20,11 @@ const deleteTask = async function(id){
 };
 
 const updateTask = async (id, tasks)=>{
-    const { title, status} = tasks;
+    const { titulo, status} = tasks;
     const SQL = `UPDATE tasks
-                    SET title = $1, status = $2
+                    SET titulo = $1, status = $2
                   WHERE id = $3`;
-    const updatedTask = await connection.query(SQL, [title, status, id])
+    const updatedTask = await connection.query(SQL, [titulo, status, id])
     return updatedTask;
 };
 
